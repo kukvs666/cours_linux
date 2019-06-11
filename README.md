@@ -119,7 +119,7 @@ Option | Description
 
 Linux protège les données et bloque l'accès aux donnée sensible, mais comme toujours sur linux il suffit de passer en super-utilisateur (root)
 
-####Exemple : 
+#### Exemple : 
 
 **`$ cd` :**
 
