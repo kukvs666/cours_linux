@@ -394,6 +394,21 @@ Attention, le "problème" du chevron simple c'est que si le fichier cible existe
 
 Petite présision ici, nous parlons bien de redirigé la sortie standard de la commande. Avec cette manière de faire, les erreur s'afficherons quand même dans la console.
 
-**Le trou noir de Linux**
+**Le trou noir de Linux :**
 
 Vous pourriez avoir envi de ne voir la sortie standard ni dans un fichier ni dans la console. Dans ce cas vous pouvez la rediriger dans le trou noir de linux, le repertoire `/dev/null`. Pourquoi le trou noir? Tout simplement que tout ce qui entre dans ce répertoire disparait irrémédiablement... 
+
+**Rediriger les erreurs :**
+
+Le même mecanisme est utiliser pour la redirection des erreurs, mais avec `2>` et `2>>`, pour redigirer dans un fichier ou à la fin d'un autre fichier.
+
+Si on reprend l'exemple précèdent avec en plus une redirection des erreurs à la fin d'un fichier log.txt (par exemple), ce nous donne:
+`$ ls /home/kuk666/Video/ > sortie.txt 2>> log.txt`
+
+**Fusions des sorties :**
+
+Parfois on peut avoir besoin de fusionner les sorties, c'est a dire rediriger les 2 sortie au même endroit (c'est d'ailleur le comportement par défaut, les deux sortie s'affiche dans la console).
+
+Pour faire cela il y as deux étapes. Il faut commencer par rediriger la sortie standard. Ensuite en fin de commande nous ajoutons `2>&1`. 
+La petite subtilité ici c'est que `2>&1` redirige les erreurs de la même façon que la sortie standard. Cela veut dire que si la sortie standard écrit les donnée en fin de fichier, `2>&1` fera de même. 
+
