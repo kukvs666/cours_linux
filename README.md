@@ -56,8 +56,8 @@ La console un le moyen de contrôler un ordinateur. Une interface graphique est 
 L'utilisation est simple, l'invite de commande attend la commande entrée par l'utilisateur.
 On peut décomposer l'invite de commande de cette façon:
 
-Login/Pseudo | Chez | nom de l'ordinateur | séparateur | dossier actuel | niveau d'autorisation 
--|-|-|-|-|
+Login/Pseudo | Chez | nom de l'ordinateur | séparateur | dossier actuel | niveau d'autorisation
+-|-|-|-|-|-
 kuk666 | @ | kuk666 | : | ~ | $ 
 
 À chaque fois que je commence un morceau de code j'utilise `$` pour indiquer la fin de mon invite de commande. Cela donne ` $ commande `
@@ -119,7 +119,7 @@ Option | Description
 
 Linux protège les données et bloque l'accès aux donnée sensible, mais comme toujours sur linux il suffit de passer en super-utilisateur (root)
 
-####Exemple : 
+#### Exemple : 
 
 **`$ cd` :**
 
