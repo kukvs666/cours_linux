@@ -16,6 +16,7 @@
 #### I. Histoire de linux.
 
 **C'est quoi Linux?** 
+
 Linux est un système d'exploitation, au même titre que MacOS et Windows.
 
 En 1984, Microsoft sort son premier OS: MS-DOS. À ce moment, un autre OS existe, c'est UNIX (depuis 1969) Mais il est beaucoup plus compliqué à utiliser, et donc réservé aux pros.
@@ -58,7 +59,8 @@ Répertoire | Rôle remplis
 
 #### III. La console.
 
-** La console linux (le Terminal)**
+**La console linux (le Terminal)**
+
 ![Une console vide](./img/console-vide.png  "Le Terminal")
 
 La console est un moyen de contrôler un ordinateur. Une interface graphique est un autre moyen, mais même si il est plus intutif, il est aussi plus limité car certaines actions ne sont pas possibles (ex. l'utilisation de `npm`, de `git` ou tout autre programme s'utilisant avec une CLI _"Command Line Interface"_). Plus généralement il est plus long et complexe de développer une interface graphique qu'une commande CLI, étant donné qu'il faut déjà que la commande soit développée avant de lui associer une interface graphique...
@@ -495,3 +497,8 @@ Attention! le gros problème de la commande ftp,  c'est qu'elle n'est pas sécur
 
 **`rsync` :** 
 une dernière commande pour finir, `rsync`permet une syncronisation de deux répertoire. Elle est souvent utiliser pour effectuer des sauvegarde incrémentielles.
+
+
+## FIN.
+
+Tout ce tutriel est inspirer du cours _Reprendre le controle à l'aide de Linux_ gratuit disponible sur [OpenClassrooms](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux). N'hésiter pas à aller le voir pour en apprendre plus! 
