@@ -2,6 +2,7 @@
 
 
 1. Histoire de linux:
+2. [test](#la-console) 
 
 #### I. Histoire de linux.
 
@@ -46,7 +47,7 @@ Répertoire | Rôle remplis
 
 
 
-#### III. La console.
+#### La console
 
 ** La console linux (le Terminal)**
 ![Une console vide](./img/console-vide.png  "Le Terminal")
