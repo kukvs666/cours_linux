@@ -1,17 +1,17 @@
 # Cours Linux/bash
 
 
-1. [Histoire de linux](#i-histoire-de-linux)
-2. [Le système de fichier linux](#ii-le-système-de-fichier-de-linux)
-3. [La console](#iii-la-console) 
-4. [les commandes](#iv-les-commandes)
-5. [RTFM lire le manuel](#v-rtfm-lire-le-manuel)
-6. [Les droits](#vi-les-droits)
-7. [Installer des programmes](#vii-installer-des-programmes)
-8. [Rechercher des fichiers](#viii-rechercher-des-fichiers)
-9. [Extraire, trier et filtrer les donnée](#ix-extraire-trier-et-filtrer-les-donnée)
-10. [Les flux de donnée](#x-les-flux-de-donnée)
-11. [Action sur un serveur distant](#xi-action-sur-un-serveur-distant)
+  - [I. Histoire de linux.](#i-histoire-de-linux)
+  - [II. Le système de fichier de Linux.](#ii-le-syst%C3%A8me-de-fichier-de-linux)
+  - [III. La console.](#iii-la-console)
+  - [IV. Les commandes.](#iv-les-commandes)
+  - [V. RTFM Lire le manuel.](#v-rtfm-lire-le-manuel)
+  - [VI. Les droits.](#vi-les-droits)
+  - [VII. Installer des programmes.](#vii-installer-des-programmes)
+  - [VIII. Rechercher des fichiers.](#viii-rechercher-des-fichiers)
+  - [IX. Extraire, trier et filtrer les données.](#ix-extraire-trier-et-filtrer-les-donn%C3%A9es)
+  - [X. Les flux de données.](#x-les-flux-de-donn%C3%A9es)
+  - [XI. Action sur un serveur distant.](#xi-action-sur-un-serveur-distant)
 
 #### I. Histoire de linux.
 
@@ -32,17 +32,17 @@ En vérité nous devrions toujours parler de GNU/Linux, car c'est cette assosiat
 
 Aujourd'hui, il y a un certain nombre de distributions de linux:
 [Lien wiki liste distributions Linux](https://fr.wikipedia.org/wiki/Liste_des_distributions_Linux).
-À savoir: Toute les distro. partage le même coeur, change l'installation, les programme pré-installé et le manager de programme.
-Les deux famille principale sont RedHat (serveurs) et Debian (Ex: Ubuntu).
+À savoir: Toute les distro. partagent le même coeur, changent l'installation, les programmes pré-installés et le manager de programme.
+Les deux familles principales sont RedHat (serveurs) et Debian (Ex: Ubuntu).
 
-Voici un lien sur les "part de marché" de Linux (difficile de mesurer les part de marché de quelque chose de gratuit):
+Voici un lien sur les "parts de marché" de Linux (difficile de mesurer les parts de marché de quelque chose de gratuit):
 [Part de marché Linux](https://fr.wikipedia.org/wiki/Linux#Parts_de_march%C3%A9).
 
 #### II. Le système de fichier de Linux.
 
-Sous Unix, le système de fichier est d'une conception assez différente que celle de Windows. Sous Unix tout est considéré comme un fichier, même un lecteur CD ou une clé USB. Comme tout est un fichier il est possible d'avoir des fichiers sans extension. Les disques (comme le `C:` le `D:`,le `E:` etc..)sont juste des fichier spéciaux qui sont montés sur le système de fichiers.
+Sous Unix, le système de fichier est d'une conception assez différente que celle de Windows. Sous Unix tout est considéré comme un fichier, même un lecteur CD ou une clé USB. Comme tout est un fichier il est possible d'avoir des fichiers sans extension. Les disques (comme le `C:` le `D:`, le `E:` etc..)sont juste des fichier spéciaux qui sont montés sur le système de fichiers.
 
-Donc il n'y as pas de `C:`, sur Linux tout commence à la racine notée `/`.
+Donc il n'y a pas de `C:`, sur Linux tout commence à la racine notée `/`.
 Il y a ensuite un certain nombre de dossiers, voici ceux qui nous intéressent: 
 
 Répertoire | Rôle remplis
@@ -76,7 +76,7 @@ kuk666 | @ | kuk666 | : | ~ | $
 
 ![console sorties](./img/console_sorties.gif  "console sorties")
 
-Une fois la commande exécutée, la console retourne soit une erreur (ici la comande `$ tre` n'existe pas), soit le resultat de la commande (ici `$ ls` retour la liste des fichiers du repertoire courant).
+Une fois la commande exécutée, la console retourne soit une erreur (ici la commande `$ tre` n'existe pas), soit le resultat de la commande (ici `$ ls` retour la liste des fichiers du repertoire courant).
 
 Ces deux sorties s'affichent par défaut dans la console, mais nous verront plus loin qu'il est possible de très facilement changer ce comportement.
 
@@ -84,9 +84,9 @@ Ces deux sorties s'affichent par défaut dans la console, mais nous verront plus
 
 Les commandes peuvent être considérées comme des fonctions. Elles peuvent être appelées avec ou sans paramètre(s). 
 
-![ls avec et sans paramètre](/home/kuk666/programation/linux/img/ls.gif  "ls avec et sans paramètre")
+![ls avec et sans paramètre](./img/ls.gif  "ls avec et sans paramètre")
 
-On voit ici que la commande `ls` (`ls` pour _list_) utilisée seule liste le contenu du dossier courant. On peut aussi lui donner en paramètre le chemin du dossier à lister. Enfin on peut donner des **options** à la commande (Les options commencent toujours par `-` ou par `--`). 
+On voit ici que la commande `ls` (`ls` pour _list_), utilisée seule, liste le contenu du dossier courant. On peut aussi lui donner en paramètre le chemin du dossier à lister. Enfin on peut donner des **options** à la commande (les options commencent toujours par `-` ou par `--`). 
 
 **Les options :**
 
@@ -238,15 +238,15 @@ Analysons le fichier 1, nous avons:
 1 | 2 | 3 | 4 | 5 | 6
 -|-|-|-|-|-
 `-`| `rwx` | `rwx` | `---` | `root` | `root`
-tiret donc c'est un fichier | tous les droit sont activés pour le proprietaire | tous les droits sont activés pour le groupe | aucun droits pour les _autres_ | Le propriétaire est `root` | le groupe propriétaire est `root`
+tiret donc c'est un fichier | tous les droits sont activés pour le propriétaire | tous les droits sont activés pour le groupe | aucun droits pour les _autres_ | Le propriétaire est `root` | le groupe propriétaire est `root`
 
 On voit que `dossier1` a un droit d'exécution pour tout le monde. En fait pour linux un dossier est un fichier particulier. Et pour pouvoir ouvrir un dossier et naviguer dans ses sous-dossiers il faut pouvoir executer ce _fichier_.
 
 **Changer les droits d'un fichier ?**
 
-Le seul qui peut modifier les droits est `root`! Pour pouvoir executer une commande en root il faut précèder la commande de la commande `sudo`. (`sudo` veut dire **S**ubstitute **U**ser **DO** _"faire en se substituant à l'utilisateur"_). On vous demandera de taper votre mot de passe pour valider l'execution de la commande. (pas de panique si vous ne voyer pas d'étoile quand vous taper votre mot de passe, linux _cache_ le nombre de caractères que vous tapez).
+Le seul qui peut modifier les droits est `root` ! Pour pouvoir exécuter une commande en root il faut précéder la commande de la commande `sudo`. (`sudo` veut dire **S**ubstitute **U**ser **DO** _" faire en se substituant à l'utilisateur"_). On vous demandera de taper votre mot de passe pour valider l'exécution de la commande (pas de panique si vous ne voyez pas d'étoiles quand vous tapez votre mot de passe, linux _cache_ le nombre de caractères que vous tapez).
 
-**Attention :** En tant que super utilisateur vous avez **TOUS** les droits. Vous devez donc être sûr de ce que vous faite à ce moment là car personne ne pourra vous empêcher de faire des grosse bêtises !!!
+**Attention :** En tant que super utilisateur vous avez **TOUS** les droits. Vous devez donc être sûrs de ce que vous faite à ce moment là car personne ne pourra vous empêcher de faire des grosses bêtises !!!
 
 _Exemple:_
 
@@ -256,7 +256,7 @@ Pour modifier les droits d'un fichier il faut utiliser la commande **`chmod`**, 
 
 **Chmod absolu :**
 
-On peut attribuer des droit avec des chiffres, chaque droit correspond à chiffre, et pour savoir quels droits on attribut à un triplet, on fait une addition.
+On peut attribuer des droits avec des chiffres, chaque droit correspond à un chiffre, et pour savoir quels droits on attribue à un triplet, on fait une addition.
 
 Correspondance droit/chiffre:
 
@@ -279,7 +279,7 @@ Droits | Chiffre | Calcul
 `r-x` | 5 | 4 + 0 + 1
 `rwx` | 7 | 4 + 2 + 1
 
-Cela peut parraitre un peu complexe au premier abord, mais dès que l'on a un peu l'habitude c'est très rapide car il suffit de faire `$ sudo chmod 700 fichier1` pour donner tous les droits au propriétaire de `fichier1`, mais aucun droit au groupe et aux autres utilisateurs.
+Cela peut paraître un peu complexe au premier abord, mais dès que l'on a un peu l'habitude c'est très rapide car il suffit de faire `$ sudo chmod 700 fichier1` pour donner tous les droits au propriétaire de `fichier1`, mais aucun droit au groupe et aux autres utilisateurs.
 
 **Chmod relatif :**
 
@@ -296,17 +296,17 @@ Lettre ou opérateur | signification
 
 On peut facilement changer des droits de cette façon. `chmod g+w fichier1` donne le droit d'écriture au groupe. `chmod u+rx fichier1` donne les droits de lecture et d'execution au propriétaire. `chmod u=rwx, g=r, o=- fichier1 ` donne tous les droits aux propriétaire, le droit de lecture au groupe et rien aux autres.
 
-Pour finir si l'on veut changer les droits d'un dossier et que cela soit répercuté sur chacun des fichiers et sous dossiers contenus, il faut utiliser l'option `-R` (**R**ecursive)!
+Pour finir si l'on veut changer les droits d'un dossier et que cela soit répercuté sur chacun des fichiers et sous-dossiers contenus, il faut utiliser l'option `-R` (**R**ecursive) !
 
 #### VII. Installer des programmes.
 
-Installer un programme sur linux est vraiment simple. La plus part des programmes linux son rasemblés sur des serveurs que l'on appelle dépôts. Ils partagent tous le même contenu. Le serveur par défaut est le plus proche géographiquement.
+Installer un programme sur linux est vraiment simple. La plupart des programmes linux son rassemblés sur des serveurs que l'on appelle dépôts. Ils partagent tous le même contenu. Le serveur par défaut est le plus proche géographiquement.
 
 En fait sous linux un programme peut rarement fonctionner seul, il a besoin de bibliothèques. Heureuseument le système de paquets Debian est intelligent, il ira checher seul toute les dépendances manquantes. Ce qui n'est pas le cas sur toutes les distros.
 
-Comment installer un programme sur linux? Avec la commande `apt`. Comme vu dans l'exemple plus haut, le synopsis de la commande `apt` est assez complexe, la commande permet beaucoup de chose. Mais voici les deux formes les plus utiles:
+Comment installer un programme sur linux? Avec la commande `apt`. Comme vu dans l'exemple plus haut, le synopsis de la commande `apt` est assez complexe, la commande permet beaucoup de choses. Mais voici les deux formes les plus utiles:
 
-* `apt-cache search votrerecherche` permet d'effectuer une recherche dans le dépot. Le retour de la commande est la liste de tout les programme qui contenait le mot clé `votrerecherche`.
+* `apt-cache search votrerecherche` permet d'effectuer une recherche dans le dépot. Le retour de la commande est la liste de tous les programmes qui contiennent le mot clé `votrerecherche`.
 * `apt-get install paquet` permet d'installer le paquet.
 
 **exemple :**
@@ -314,7 +314,7 @@ Comment installer un programme sur linux? Avec la commande `apt`. Comme vu dans 
 ![apt-get](./img/install-Breakout.gif  "apt-get")
 
 Dans cet exemple je commence par chercher un jeu de casse brique (breakout). Ensuite j'installe le paquet `lbreakout2`. Cela me demande mon mot de passe car pour installer un programme je dois être en _Root_ (Super Utilisateur). 
-On me donne des information sur le contenu du paquet et les dépendances dont il a besoin pour fonctionner, et on nous demande si nous voulons continuer. 
+On me donne des informations sur le contenu du paquet et les dépendances dont il a besoin pour fonctionner, et on nous demande si nous voulons continuer. 
 
 Si on répond oui, la magie d'`apt-get` opère: Le programme va aller télécharger tout seul le paquet sur le dépot ainsi que toute les dépendances dont il a besoin et que nous n'avons pas. Puis il _dépaquète_ les fichiers qui étaient à l'intérieur du paquet, les installe et effectue les paramétrages tout seul.
 
@@ -326,8 +326,8 @@ Pour rechercher des fichier il y a deux commandes, `locate` et `find`. La premi�
 
 **`locate` :**
 
-Linux contient une base de données qui est un index de tous les fichier du disque dur. La base de données se met à jour 1 fois par jour. 
-`locate` permet de chercher dans cette base de donnée, et permet de retrouver un fichier **très rapidement**. Son inconvénient est que si le fichier vient juste d'être créé, il n'apparaîtra pas dans les résultat de recherche car il n'est pas encore inscrit dans la base de données. On peut forcer la mise à jour de la BDD grâce à la commande `sudo updatedb`, mais cette dernière prend un certain temps, donc autant utiliser directement `find`. 
+Linux contient une base de données qui est un index de tous les fichiers du disque dur. La base de données se met à jour 1 fois par jour. 
+`locate` permet de chercher dans cette base de données, et permet de retrouver un fichier **très rapidement**. Son inconvénient est que si le fichier vient juste d'être créé, il n'apparaîtra pas dans les résultats de recherche car il n'est pas encore inscrit dans la base de données. On peut forcer la mise à jour de la BDD grâce à la commande `sudo updatedb`, mais cette dernière prend un certain temps, donc autant utiliser directement `find`. 
 
 **`find` :**
 
@@ -362,13 +362,13 @@ C'est une liste non-exaustive, pour connaitre toute les posibilité pour le `Quo
 
 **Que faire avec :**
 
-Allez, ca c'était la partie facile de la commande `find`, maintenant voici ce qui fait que la commande `find` est si puissante.
+Allez, ça c'était la partie facile de la commande `find`, maintenant voici ce qui fait que la commande `find` est si puissante.
 
 Que faire avec? Nous avons dit plus haut que par défault, la commande `find` affiche le résultat dans la console. En fait, `find` est executé avec l'option `-print`. 
 
 Il y a plusieurs options qui permettent de formatter la sortie, et de l'envoyer dans un fichier plutôt que dans la console. Il faut absolument connaître `printf`_`format`_ qui permet de choisir de manière très précise quelles informations du fichier afficher (parmi les meta-données) et permet aussi d'ajouter du texte personalisé.
 
-Au delà des notions de format, l'option qui fait toute la puissance de find est `-exec`_`commande`_. Cela permet d'utiliser une commande  pour chacun des résultats! Et vous pouvez exécuter presque toute les commandes. La syntaxe est composé de quatre élements:
+Au delà des notions de format, l'option qui fait toute la puissance de find est `-exec`_`commande`_. Cela permet d'utiliser une commande pour chacun des résultats ! Et vous pouvez exécuter presque toute les commandes. La syntaxe est composé de quatre élements:
 
 Élement | signification
 -|-
@@ -383,58 +383,58 @@ Comment faire si je veux copier toute les images .jpg de mon disque dur dans un 
 
 ![find -exec](./img/findExec.gif  "find -exec") 
 
-Ici j'ai volontairement bridé la commande avec l'option `-maxdepth 1` pour que find ne descende pas plus en profondeur dans l'arborescence que 1 étage, soit le dossier courant, ceci pour ne pas faire un gif ou rien ne se passe, le temps que la commande s'execute...
+Ici j'ai volontairement bridé la commande avec l'option `-maxdepth 1` pour que find ne descende pas plus en profondeur dans l'arborescence que 1 étage, soit le dossier courant, ceci pour ne pas faire un gif ou rien ne se passe, le temps que la commande s'exécute...
 
-#### IX. Extraire, trier et filtrer les donnée.
+#### IX. Extraire, trier et filtrer les données.
 
-Nous allons maintenant voir quelques commandes qui permette d'extraire, de trier et de filtrer les donnée. Aucune de ces commandes ne modifie le fichier de base.
+Nous allons maintenant voir quelques commandes qui permettent d'extraire, de trier et de filtrer les données. Aucune de ces commandes ne modifie le fichier de base.
 
-* `wc` : est l'abréviation de Word Count, cette commande permet de compter le nombre de mot dans un fichier, le nombre de ligne et le nombre d'octets. Avec les options on peut plus présisément choisir que info on affiche (et il y en as plus que les trois décrite ici).
-* `uniq` : nous permet de d'afficher les contenu du fichier sans les lignes en doublons. En fait elle nous permet aussi de voir le nombre d'ocurence de chaque ligne (`-c`), n'afficher que les lignes présente en double (`-d`).
-* `sort`: nous permet de trier un fichier (par ordre lexicographique). On peut inverser le trie (`-r`), trier aléatoirement (`-R`) et beacoup d'autre tri (mois, jour de la semaine etc...).
-* `cut` : nous permet de couper une partie du fichier. On peux couper selon un nombre de caractère, ou selon un déliminateur. Dans ce dernier cas il faut utiliser `-d delimitateur`pour definir quel symbole dans la ligne sert de delimitateur (pour un espace ne pas oublier les apostrophes). Ensuite il faut préciser quel champ nous voulons afficher avec `-f numéros`( on peut entrer les numéros de plusieurs champs).
-* `grep`: filter les données. Cette commande est sans doute la plus utiliser de toutes et mérite donc de se pencher un peu dessus.
+* `wc` : est l'abréviation de Word Count, cette commande permet de compter le nombre de mots dans un fichier, le nombre de lignes et le nombre d'octets. Avec les options on peut plus précisément choisir quels informations afficher (et il y en a plus que les trois décrite ici).
+* `uniq` : nous permet de d'afficher le contenu d'un fichier sans les lignes en doublons. En fait elle nous permet aussi de voir le nombre d'ocurence de chaque ligne (`-c`), ou n'afficher que les lignes présente en double (`-d`).
+* `sort`: nous permet de trier un fichier (par ordre lexicographique). On peut inverser le tri (`-r`), trier aléatoirement (`-R`) et beaucoup d'autres tris (mois, jour de la semaine etc...).
+* `cut` : nous permet de couper une partie d'un fichier. On peux couper selon un nombre de caractères, ou selon un délimiteur. Dans ce dernier cas il faut utiliser `-d delimiteur` pour définir quel symbole dans la ligne sert de delimiteur (pour un espace ne pas oublier les apostrophes). Ensuite il faut préciser quel champ nous voulons afficher avec `-f numéros` (on peut entrer les numéros de plusieurs champs).
+* `grep`: filter les données. Cette commande est sans doute la plus utilisée de toutes et mérite donc de se pencher un peu dessus.
 
 **`grep` :**
 
-L'idée de cette commande est simple, elle permet de rechercher un mot ou une exepression régulière dans un fichier. 
+L'idée de cette commande est simple, elle permet de rechercher un mot ou une expression régulière dans un fichier. 
 
 **Par exemple :** 
-`$ grep class index.html` me renverra toute les lignes ou sera présent le mot class. Petite précision, le mot chercher peut être précèder et suivi par d'autre caractère sans que cela affecte la recherche. `class` sera trouver dans _**class**ique_, _ hyper**class**e_ . Par contre la casse est prise en compte par defaut, pour ne pas en tenir compte il faut utiliser l'option `-i`.
+`$ grep class index.html` me renverra toutes les lignes ou sera présent le mot _"class"_. Petite précision, le mot cherché peut être précédé et suivi par d'autres caractères sans que cela n'affecte la recherche. `class` sera trouvé dans _**class**ique_, _hyper**class**e_ . Par contre la casse est prise en compte par defaut, pour ne pas en tenir compte il faut utiliser l'option `-i`.
 
-Cette commande à quelque options très utile: 
+Cette commande a quelque options très utiles: 
  * `-n` : affiche le numéro de la ligne ou est trouvé le mot.
  * `-v`: inverser la recherche, c'est à dire ignorer le mot. Cela affichera toute les lignes ou on ne trouve pas le mot.
- * `-r` : Rechercher dans tout les fichier et les sous-dossiers, cette fois il faudra indique le nom du répertoire de recherche au lieu du nom de fichier.
+ * `-r` : Rechercher dans tout les fichier et les sous-dossiers, cette fois il faudra indiquer le nom du répertoire de recherche au lieu du nom de fichier.
 
-Nous pouvons aussi utiliser les expréssions régulière pour faire des recherche très poussé. Pour pouvoir les utiliser, il faut ajouter l'option `-E`
+Nous pouvons aussi utiliser les expressions régulières pour faire des recherches très poussées. Pour pouvoir les utiliser, il faut ajouter l'option `-E`
 
-Et puis c'est tout. Cette commande est assez simple mais très puissante. Avec le chapitre suivant nous allons voir que l'on peut l'utiliser d'une autre facon qui nous sera très utile.
+Et puis c'est tout. Cette commande est assez simple mais très puissante. Avec le chapitre suivant nous allons voir que l'on peut l'utiliser d'une autre façon qui nous sera très utile.
 
 
-#### X. Les flux de donnée.
+#### X. Les flux de données.
 
-Nous avons vu plusieurs fois la notion de sortie standard, mais aussi la sortie d'erreur. Ici nous allons voir comment maitriser les flux de donnée. 
+Nous avons vu plusieurs fois la notion de sortie standard, mais aussi la sortie d'erreur. Ici nous allons voir comment maîtriser les flux de donnée. 
 
 Prenons pour exemple la commande `ls`. Nous nous rappelons qu'elle sert à lister les fichiers contenus dans le dossier donné en argument. Si aucun dossier n'est précisé, c'est par defaut le répertoire courant qui sera listé.
 
 Nous avons deux possibilités, soit le chemin du dossier est valide et `ls` nous affiche la sortie standard (le résultat). Dans le cas où le dossier n'est pas valide, il y a une deuxième sortie possible, la sortie d'erreur.
 
-Nous avons donc, pour chaque commande **deux** sortie possible et **distinctes :** La sortie standard et la sortie d'erreur. Par défaut ces deux sortie s'affichent dans la console, c'est pour cette raison que nous ne faisons pas forcement attention à cette distinction, mais cela sera utile pour la suite.
+Nous avons donc, pour chaque commande **deux** sorties possibles et **distinctes :** La sortie standard et la sortie d'erreur. Par défaut ces deux sorties s'affichent dans la console, c'est pour cette raison que nous ne faisons pas forcement attention à cette distinction, mais cela sera utile pour la suite.
 
 Si c'est un comportement par défaut cela veut dire que l'on peut faire autrement!
 
 **Rediriger le résultat dans un fichier :**
 
-Imaginons que nous souhaitions conserver la liste de tout les films qui sont dans notre dossier Vidéo, pour par exemple la partager. Comment feriez vous en graphique ???
-En console en tout la c'est très simple il suffit d'ajouter en fin de commande le chevron fermant `>` suivi du nom du fichier dans lequel ecrire la sortie standard. Si le fichier n'existe pas, il est crée. 
+Imaginons que nous souhaitions conserver la liste de tous les films qui sont dans notre dossier Vidéo, pour par exemple la partager. Comment feriez vous en graphique ???
+En console en tout cas c'est très simple: il suffit d'ajouter en fin de commande le chevron fermant `>` suivi du nom du fichier dans lequel écrire la sortie standard. Si le fichier n'existe pas, il est créé. 
 
-Cela donnerait quelque chose comme ca: 
+Cela donnerait quelque chose comme ça: 
 `$ ls /home/kuk666/Video/ > sortie.txt`
 
 Attention, le "problème" du chevron simple c'est que si le fichier cible existe déjà, il est écrasé. Pour simplement ajouter du contenu à celui déjà existant, il nous faudra utiliser les doubles chevrons fermants `>>`.
 
-Petite précision ici, nous parlons bien de rediriger la sortie standard de la commande. Avec cette manière de faire, les erreur s'afficheront quand même dans la console.
+Petite précision ici, nous parlons bien de rediriger la sortie standard de la commande. Avec cette manière de faire, les erreurs s'afficheront quand même dans la console.
 
 **Le trou noir de Linux :**
 
@@ -444,61 +444,64 @@ Vous pourriez avoir envie de ne voir la sortie standard ni dans un fichier ni da
 
 Le même mecanisme est utilisé pour la redirection des erreurs, mais avec `2>` et `2>>`, pour les redigirer dans un fichier ou à la fin d'un autre fichier.
 
-Si on reprend l'exemple précèdent avec en plus une redirection des erreurs à la fin d'un fichier log.txt (par exemple), ce nous donne:
+Si l'on reprend l'exemple précèdent avec en plus une redirection des erreurs à la fin d'un fichier log.txt (par exemple), ça nous donne:
 `$ ls /home/kuk666/Video/ > sortie.txt 2>> log.txt`
 
 **Fusions des sorties :**
 
-Parfois on peut avoir besoin de fusionner les sorties, c'est a dire rediriger les deux sorties au même endroit (c'est d'ailleur le comportement par défaut, les deux sorties s'affichent dans la console).
+Parfois on peut avoir besoin de fusionner les sorties, c'est à dire rediriger les deux sorties au même endroit (c'est d'ailleurs le comportement par défaut, les deux sorties s'affichent dans la console).
 
-Pour faire cela il y as deux étapes. Il faut commencer par rediriger la sortie standard. Ensuite en fin de commande nous ajoutons `2>&1`. 
-La petite subtilité ici c'est que `2>&1` redirige les erreurs de la même façon que la sortie standard. Cela veut dire que si la sortie standard écrit les donnée en fin de fichier, `2>&1` fera de même. 
+Pour faire cela il y a deux étapes. Il faut commencer par rediriger la sortie standard. Ensuite en fin de commande nous ajoutons `2>&1`. 
+La petite subtilité ici c'est que `2>&1` redirige les erreurs de la même façon que la sortie standard. Cela veut dire que si la sortie standard écrit les donnéees en fin de fichier, `2>&1` fera de même. 
 
-**Chainer les commandes :**
+**Chaîner les commandes :**
 
-C'est sans doute le plus grand intéret de la console. Le fait de pouvoir chainer les commandes, c'est à dire envoyer la sortie standard à.. **l'entrée** de la commande suivante. 
+C'est sans doute le plus grand intérêt de la console. Le fait de pouvoir chainer les commandes, c'est à dire envoyer la sortie standard à... **l'entrée** de la commande suivante. 
 
-Toute les commandes que nous avons vu jusqu'à maintenant sont très simple.  Cela vient du fait que la plupart de ces commandes date des années 60.... Et si on utilise toujours les mêmes commandes, c'est parce qu'elle font une action très simple mais qu'elles le font bien. La console trouve toute sa puissance dans sa possibilité de combiner ces petites commandes ensemble pour arriver à un résultat attendu.
+Toutes les commandes que nous avons vues jusqu'à maintenant sont très simples.  Cela vient du fait que la plupart de ces commandes date des années 60.... Et si on utilise toujours les mêmes commandes, c'est parce qu'elle font une action très simple mais qu'elles le font bien. La console trouve toute sa puissance dans sa possibilité de combiner ces petites commandes ensemble pour arriver à un résultat attendu.
 
 **Exemple :** 
 
-Imaginons que nous voulons afficher la liste de toutes les images .jpg que nous avons en vrac dans un dossier avec des .pdf, .txt etc..
+Imaginons que nous voulions afficher la liste de toutes les images .jpg que nous avons en vrac dans un dossier avec des .pdf, .txt etc..
 Nous connaissons `ls` pour faire la liste des fichiers et `grep` pour filtrer les lignes qui contienne un .jpg !
 La commande sera donc : `ls -l | grep .jpg`
 
 Le fait de pouvoir chainer les commandes permet de décluper l'utilité de la console. Nous venons de voir un exemple très simple, mais vous pouvez chainer les commandes à l'infini, donc vous pouvez écrire des commandes très puissante. 
 
-Imaginer que vous avez 10 fichier (f1, f2, ... ,f10) regroupant des centaines d'email. Vous voulez avoir un seul fichier avec les email trier par ordre alphabétique sans aucun doublons. En plus vous ne voulez que les adresses gmail. 
-Nous savons déjà que nous allons devoir rediriger le résultat dans un fichier (par exemple ici `liste_gmail.txt`). Il va aussi falloir afficher les 10 fichiers , donc `cat`, filtrer les donnée, donc `grep`, puis trier et enlever les doublons.
+Imaginez que vous ayez 10 fichiers nommés f1, f2, ..., f10, regroupant des centaines d'emails. Vous voulez avoir un seul fichier avec les emails triés par ordre alphabétique sans aucun doublons. En plus vous ne voulez que les adresses gmail. 
+Nous savons déjà que nous allons devoir rediriger le résultat dans un fichier (par exemple ici `liste_gmail.txt`). Il va aussi falloir afficher les 10 fichiers, donc `cat`, filtrer les donnée, donc `grep`, puis trier et enlever les doublons.
 
 **Réponse :** `$ cat f* | grep gmail | sort | uniq > liste_email.txt `
 
 #### XI. Action sur un serveur distant.
 
-Souvent nous serons ammener à faire des transferts de fichier entre ordinateur distant. Nous allons parler des deux manières de faire. En se connectant en **ssh** sur l'ordinateur distant, [voir cours](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/41773-la-connexion-securisee-a-distance-avec-ssh). Sinon il faut passer par un **serveur FTP**
+Souvent nous serons ammenés à faire des transferts de fichier entre des ordinateurs distants. Nous allons parler de deux manières de faire. En se connectant en **ssh** sur l'ordinateur distant, [voir cours](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/41773-la-connexion-securisee-a-distance-avec-ssh). Sinon il faut passer par un **serveur FTP** (on a aussi les deploiements avec git, mais qui se basent en réalité sur ssh ou http, et d'autres protocoles disons plus ésotériques).
 
-Pour savoir comment se connecter en **ssh** je vous laisser suis le morceau de tuto OpenClassrooms ci-dessus. Par contre une fois connecter il vous faudra connaitre la commande qui permet de copier des fichiers sur le réseau. 
+**ssh :**
+
+Pour savoir comment se connecter en **ssh** je vous laisse suivre le morceau de tuto OpenClassrooms ci-dessus. Par contre une fois connecté il vous faudra connaitre la commande qui permet de copier des fichiers sur le réseau. 
 
 La commande est `scp` pour _Secure CoPy_. Elle s'utilise exactement comme cp, c'est à dire `scp fichier_origine copie_destination`. La différence est que chacun des deux argument peut s'ecrire sous la forme `login@ip:nom_fichier`. Si le seul le nom du fichier est écrit, alors la commande scp considérera que le fichier ce trouve sur l'ordinateur local.
 
-En passant par une connection à un serveur FTP, les choses sont un peut différente. 
 
-Déjà il faut commencer par se connecter au serveur FTP. Pour ca il suffit d'entrer la commande `ftp adresse_serveur`. 
-Une fois connecter vous avez un prompt de la forme `ftp>` qui attend des commande, toute celles que nous connaissons déjà (`ls`, `cd`, `mv` etc...). Il y as quelque commande qui ont des noms différents, je vous laisse regarder le man de la commande ftp pour en savoir plus.
-Nous pouvons avoir besoin de faire toute ces commandes de notre coté, et non sur le serveur, pour cela il suffit d'ajouter un `!` devant la commande pour qu'elle sexecute de notre coté.
+**ftp :**
+En passant par une connection à un serveur FTP, les choses sont un peut différentes. 
 
-Pour transférer des fichiers sur le réseau il y as deux commande à connaitre :
+Déjà il faut commencer par se connecter au serveur FTP. Pour ça il suffit d'entrer la commande `ftp adresse_serveur` (ou d'utiliser une interface graphique bien sûr). 
+Une fois connecté vous avez un prompt de la forme `ftp> ` qui attend des commande, toute celles que nous connaissons déjà (`ls`, `cd`, `mv` etc...). Il y a quelques commandes qui ont des noms différents, je vous laisse regarder le `man` de la commande ftp pour en savoir plus.
+Nous pouvons avoir besoin de faire toutes ces commandes de notre coté, et non sur le serveur, pour cela il suffit d'ajouter un `!` devant la commande pour qu'elle s'exécute de notre coté.
+
+Pour transférer des fichiers sur le réseau il y a deux commande à connaitre :
 
 * `put`: envoie un fichier vers le serveur.
-* `get`: télécharger un fichier depuis le serveur.
+* `get`: télécharge un fichier depuis le serveur.
 
-Attention! le gros problème de la commande ftp,  c'est qu'elle n'est pas sécurisé, c'est as dire que toute les donnée voyage en clair sur le réseau. Heureusement, il existe la commande `sftp` qui fait les chose de la même facon et même mieux de `ftp`. Mais il faut utiliser ssh pour se connecter.
+> Attention! Le gros problème de la commande ftp,  c'est qu'elle n'est pas sécurisée, c'est à dire que toute les données voyagent en clair sur le réseau. Heureusement, il existe la commande `sftp`  pour _secure_ FTP qui fait les chose de la même façon, et même mieux que `ftp`. Mais il faut utiliser ssh pour se connecter.
 
 
-**`rsync` :** 
-une dernière commande pour finir, `rsync`permet une syncronisation de deux répertoire. Elle est souvent utiliser pour effectuer des sauvegarde incrémentielles.
+* `rsync`: une dernière commande pour finir, `rsync` permet une syncronisation de deux répertoires. Elle est souvent utilisée pour effectuer des sauvegardes incrémentielles.
 
 
 ## FIN.
 
-Tout ce tutriel est inspirer du cours _Reprendre le controle à l'aide de Linux_ gratuit disponible sur [OpenClassrooms](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux). N'hésiter pas à aller le voir pour en apprendre plus! 
+Tout ce tuturiel est inspiré du cours _Reprendre le controle à l'aide de Linux_ gratuit disponible sur [OpenClassrooms](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux). N'hésitez pas à aller le voir pour en apprendre plus! 
