@@ -213,7 +213,7 @@ La première colonne donne une infomation sur le type. Soit c'est un dossier `d`
 Ensuite chaque colonne donne les trois droits de l'utilisateur (colonne 2), du groupe, et du reste du monde (4ème colonne)
 
 colonne 1 | colonne 2 | colonne 3 | colonne 4
-- | - | - | -
+-| - | - | -
 `d` | `rwx` | `rwx` | `rwx`
 Type | Utilisateur | Groupe | Autres
 
@@ -430,14 +430,14 @@ Vous pourriez avoir envie de ne voir la sortie standard ni dans un fichier ni da
 
 **Rediriger les erreurs :**
 
-Le même mecanisme est utiliser pour la redirection des erreurs, mais avec `2>` et `2>>`, pour redigirer dans un fichier ou à la fin d'un autre fichier.
+Le même mecanisme est utilisé pour la redirection des erreurs, mais avec `2>` et `2>>`, pour les redigirer dans un fichier ou à la fin d'un autre fichier.
 
 Si on reprend l'exemple précèdent avec en plus une redirection des erreurs à la fin d'un fichier log.txt (par exemple), ce nous donne:
 `$ ls /home/kuk666/Video/ > sortie.txt 2>> log.txt`
 
 **Fusions des sorties :**
 
-Parfois on peut avoir besoin de fusionner les sorties, c'est a dire rediriger les 2 sortie au même endroit (c'est d'ailleur le comportement par défaut, les deux sortie s'affiche dans la console).
+Parfois on peut avoir besoin de fusionner les sorties, c'est a dire rediriger les deux sorties au même endroit (c'est d'ailleur le comportement par défaut, les deux sorties s'affichent dans la console).
 
 Pour faire cela il y as deux étapes. Il faut commencer par rediriger la sortie standard. Ensuite en fin de commande nous ajoutons `2>&1`. 
 La petite subtilité ici c'est que `2>&1` redirige les erreurs de la même façon que la sortie standard. Cela veut dire que si la sortie standard écrit les donnée en fin de fichier, `2>&1` fera de même. 
@@ -446,11 +446,42 @@ La petite subtilité ici c'est que `2>&1` redirige les erreurs de la même faço
 
 C'est sans doute le plus grand intéret de la console. Le fait de pouvoir chainer les commandes, c'est à dire envoyer la sortie standard à.. **l'entrée** de la commande suivante. 
 
-Toute les commandes que nous avons vu jusqu'à maintenant sont très simple, même parfois trop simple pour qu'elle soit réelement utile. Cela vient du fait que la plupart de ces commande date des année 60.... Et si on utilise toujours les mêmes commande, c'est parce qu'elle font une action très simple et qu'elles le font bien. La console trouve toute sa puissance dans sa possibilité de combiner ces petite commande ensemble pour arriver à un résultat attendu.
+Toute les commandes que nous avons vu jusqu'à maintenant sont très simple.  Cela vient du fait que la plupart de ces commandes date des années 60.... Et si on utilise toujours les mêmes commandes, c'est parce qu'elle font une action très simple mais qu'elles le font bien. La console trouve toute sa puissance dans sa possibilité de combiner ces petites commandes ensemble pour arriver à un résultat attendu.
 
 **Exemple :** 
 
-Imaginons que nous voulons afficher la liste de toute les images .jpg que nous avons en vrac dans un dossier avec des .pdf, .txt etc..
+Imaginons que nous voulons afficher la liste de toutes les images .jpg que nous avons en vrac dans un dossier avec des .pdf, .txt etc..
 Nous connaissons `ls` pour faire la liste des fichiers et `grep` pour filtrer les lignes qui contienne un .jpg !
 La commande sera donc : `ls -l | grep .jpg`
 
+Le fait de pouvoir chainer les commandes permet de décluper l'utilité de la console. Nous venons de voir un exemple très simple, mais vous pouvez chainer les commandes à l'infini, donc vous pouvez écrire des commandes très puissante. 
+
+Imaginer que vous avez 10 fichier (f1, f2, ... ,f10) regroupant des centaines d'email. Vous voulez avoir un seul fichier avec les email trier par ordre alphabétique sans aucun doublons. En plus vous ne voulez que les adresses gmail. 
+Nous savons déjà que nous allons devoir rediriger le résultat dans un fichier (par exemple ici `liste_gmail.txt`). Il va aussi falloir afficher les 10 fichiers , donc `cat`, filtrer les donnée, donc `grep`, puis trier et enlever les doublons.
+
+**Réponse :** `$ cat f* | grep gmail | sort | uniq > liste_email.txt `
+
+#### Action sur un serveur distant.
+
+Souvent nous serons ammener à faire des transferts de fichier entre ordinateur distant. Nous allons parler des deux manières de faire. En se connectant en **ssh** sur l'ordinateur distant, [voir cours](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/41773-la-connexion-securisee-a-distance-avec-ssh). Sinon il faut passer par un **serveur FTP**
+
+Pour savoir comment se connecter en **ssh** je vous laisser suis le morceau de tuto OpenClassrooms ci-dessus. Par contre une fois connecter il vous faudra connaitre la commande qui permet de copier des fichiers sur le réseau. 
+
+La commande est `scp` pour _Secure CoPy_. Elle s'utilise exactement comme cp, c'est à dire `scp fichier_origine copie_destination`. La différence est que chacun des deux argument peut s'ecrire sous la forme `login@ip:nom_fichier`. Si le seul le nom du fichier est écrit, alors la commande scp considérera que le fichier ce trouve sur l'ordinateur local.
+
+En passant par une connection à un serveur FTP, les choses sont un peut différente. 
+
+Déjà il faut commencer par se connecter au serveur FTP. Pour ca il suffit d'entrer la commande `ftp adresse_serveur`. 
+Une fois connecter vous avez un prompt de la forme `ftp>` qui attend des commande, toute celles que nous connaissons déjà (`ls`, `cd`, `mv` etc...). Il y as quelque commande qui ont des noms différents, je vous laisse regarder le man de la commande ftp pour en savoir plus.
+Nous pouvons avoir besoin de faire toute ces commandes de notre coté, et non sur le serveur, pour cela il suffit d'ajouter un `!` devant la commande pour qu'elle sexecute de notre coté.
+
+Pour transférer des fichiers sur le réseau il y as deux commande à connaitre :
+
+* `put`: envoie un fichier vers le serveur.
+* `get`: télécharger un fichier depuis le serveur.
+
+Attention! le gros problème de la commande ftp,  c'est qu'elle n'est pas sécurisé, c'est as dire que toute les donnée voyage en clair sur le réseau. Heureusement, il existe la commande `sftp` qui fait les chose de la même facon et même mieux de `ftp`. Mais il faut utiliser ssh pour se connecter.
+
+
+**`rsync` :** 
+une dernière commande pour finir, `rsync`permet une syncronisation de deux répertoire. Elle est souvent utiliser pour effectuer des sauvegarde incrémentielles.
