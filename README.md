@@ -369,6 +369,32 @@ Comment faire si je veux copier toute les images .jpg de mon disque dur dans un 
 ![find -exec](/home/kuk666/programation/linux/img/findExec.gif  "find -exec") 
 
 Ici j'ai volontairement brider la commande avec l'option `-maxdetph 1` pour que find ne descende pas plus en profondeur dans l'arborescence que 1 étage soit le dossier courant, ceci pour ne pas faire un gif ou rien ne se passe, le temps que la commande s'execute.
+#### Extraire, trier et filtrer les donnée :
+
+Nous allons maintenant voir quelques commandes qui permette d'extraire, de trier et de filtrer les donnée. Aucune de ces commandes ne modifie le fichier de base.
+
+* `wc` : est l'abréviation de Word Count, cette commande permet de compter le nombre de mot dans un fichier, le nombre de ligne et le nombre d'octets. Avec les options on peut plus présisément choisir que info on affiche (et il y en as plus que les trois décrite ici).
+* `uniq` : nous permet de d'afficher les contenu du fichier sans les lignes en doublons. En fait elle nous permet aussi de voir le nombre d'ocurence de chaque ligne (`-c`), n'afficher que les lignes présente en double (`-d`).
+* `sort`: nous permet de trier un fichier (par ordre lexicographique). On peut inverser le trie (`-r`), trier aléatoirement (`-R`) et beacoup d'autre tri (mois, jour de la semaine etc...).
+* `cut` : nous permet de couper une partie du fichier. On peux couper selon un nombre de caractère, ou selon un déliminateur. Dans ce dernier cas il faut utiliser `-d delimitateur`pour definir quel symbole dans la ligne sert de delimitateur (pour un espace ne pas oublier les apostrophes). Ensuite il faut préciser quel champ nous voulons afficher avec `-f numéros`( on peut entrer les numéros de plusieurs champs).
+* `grep`: filter les données. Cette commande est sans doute la plus utiliser de toutes et mérite donc de se pencher un peu dessus.
+
+**`grep` :**
+
+L'idée de cette commande est simple, elle permet de rechercher un mot ou une exepression régulière dans un fichier. 
+
+**Par exemple :** 
+`$ grep class index.html` me renverra toute les lignes ou sera présent le mot class. Petite précision, le mot chercher peut être précèder et suivi par d'autre caractère sans que cela affecte la recherche. `class` sera trouver dans _**class**ique_, _ hyper**class**e_ . Par contre la casse est prise en compte par defaut, pour ne pas en tenir compte il faut utiliser l'option `-i`.
+
+Cette commande à quelque options très utile: 
+ * `-n` : affiche le numéro de la ligne ou est trouvé le mot.
+ * `-v`: inverser la recherche, c'est à dire ignorer le mot. Cela affichera toute les lignes ou on ne trouve pas le mot.
+ * `-r` : Rechercher dans tout les fichier et les sous-dossiers, cette fois il faudra indique le nom du répertoire de recherche au lieu du nom de fichier.
+
+Nous pouvons aussi utiliser les expréssions régulière pour faire des recherche très poussé. Pour pouvoir les utiliser, il faut ajouter l'option `-E`
+
+Et puis c'est tout. Cette commande est assez simple mais très puissante. Avec le chapitre suivant nous allons voir que l'on peut l'utiliser d'une autre facon qui nous sera très utile.
+
 
 #### Les flux de donnée :
 
@@ -411,4 +437,16 @@ Parfois on peut avoir besoin de fusionner les sorties, c'est a dire rediriger le
 
 Pour faire cela il y as deux étapes. Il faut commencer par rediriger la sortie standard. Ensuite en fin de commande nous ajoutons `2>&1`. 
 La petite subtilité ici c'est que `2>&1` redirige les erreurs de la même façon que la sortie standard. Cela veut dire que si la sortie standard écrit les donnée en fin de fichier, `2>&1` fera de même. 
+
+**Chainer les commandes :**
+
+C'est sans doute le plus grand intéret de la console. Le fait de pouvoir chainer les commandes, c'est à dire envoyer la sortie standard à.. **l'entrée** de la commande suivante. 
+
+Toute les commandes que nous avons vu jusqu'à maintenant sont très simple, même parfois trop simple pour qu'elle soit réelement utile. Cela vient du fait que la plupart de ces commande date des année 60.... Et si on utilise toujours les mêmes commande, c'est parce qu'elle font une action très simple et qu'elles le font bien. La console trouve toute sa puissance dans sa possibilité de combiner ces petite commande ensemble pour arriver à un résultat attendu.
+
+**Exemple :** 
+
+Imaginons que nous voulons afficher la liste de toute les images .jpg que nous avons en vrac dans un dossier avec des .pdf, .txt etc..
+Nous connaissons `ls` pour faire la liste des fichiers et `grep` pour filtrer les lignes qui contienne un .jpg !
+La commande sera donc : `ls -l | grep .jpg`
 
