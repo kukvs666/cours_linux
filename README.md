@@ -1,8 +1,17 @@
 # Cours Linux/bash
 
 
-1. Histoire de linux:
-2. [test](#la-console) 
+1. [Histoire de linux](#i-histoire-de-linux)
+2. [Le système de fichier linux](#ii-le-système-de-fichier-de-linux)
+3. [La console](#iii-la-console) 
+4. [les commandes](#iv-les-commandes)
+5. [RTFM lire le manuel](#v-rtfm-lire-le-manuel)
+6. [Les droits](#vi-les-droits)
+7. [Installer des programmes](#vii-installer-des-programmes)
+8. [Rechercher des fichiers](#viii-rechercher-des-fichiers)
+9. [Extraire, trier et filtrer les donnée](#ix-extraire-trier-et-filtrer-les-donnée)
+10. [Les flux de donnée](#x-les-flux-de-donnée)
+11. [Action sur un serveur distant](#xi-action-sur-un-serveur-distant)
 
 #### I. Histoire de linux.
 
@@ -47,7 +56,7 @@ Répertoire | Rôle remplis
 
 
 
-#### La console
+#### III. La console.
 
 ** La console linux (le Terminal)**
 ![Une console vide](./img/console-vide.png  "Le Terminal")
@@ -151,7 +160,7 @@ Commande | Description
 `$ head` | Affiche le début du fichier (l'option `-n` permet de choisir le nb de lignes à afficher).
 `$ tail` | Affiche la fin du fichier (l'option `-n` fonctionne pareil, il s'ajoute `-f` pour _follow_ qui permet de suivre le fichier). Faire <kbd>Ctrl+C</kbd> pour arrêter la commande.
 
-#### RTFM Lire le manuel :
+#### V. RTFM Lire le manuel.
 
 Il y a beaucoup, beaucoup de commandes. Sur Ubuntu il y a plus de 2000 commandes installées de base, et s'il y en existe beaucoup plus, il est aussi facile d'en créer d'autre.
 Il n'est donc pas possible de les connaitre toutes, et encore plus illusoire de connaitre toute les options de chacune de ses commandes. Il est donc indispensable de savoir lire documentation de bash. 
@@ -196,7 +205,7 @@ Syntaxe | Signification
 a`| `b | OU EXCLUSIF, ici c'est soit a, soit b.
 x`...` | Indique que x peut être répété autant de fois que vous voulez.
 
-#### Les droits:
+#### VI. Les droits.
 
 Linux est un système multi-utilisateurs, ce qui veut dire que plusieurs personnes peuvent travailler simultanément sur le même système. 
 
@@ -287,7 +296,7 @@ On peut facilement changer des droits de cette façon. `chmod g+w fichier1` donn
 
 Pour finir si l'on veut changer les droits d'un dossier et que cela soit répercuté sur chacun des fichiers et sous dossiers contenus, il faut utiliser l'option `-R` (**R**ecursive)!
 
-#### Installer des programmes :
+#### VII. Installer des programmes.
 
 Installer un programme sur linux est vraiment simple. La plus part des programmes linux son rasemblés sur des serveurs que l'on appelle dépôts. Ils partagent tous le même contenu. Le serveur par défaut est le plus proche géographiquement.
 
@@ -309,7 +318,7 @@ Si on répond oui, la magie d'`apt-get` opère: Le programme va aller téléchar
 
 Enfin voici une dernière commande, pour désinstaller un paquet: `apt-get autoremove paquet`. Notez ici `autoremove` permet aussi de désintaller les librairies inutiles.
 
-#### Rechercher des fichiers :
+#### VIII. Rechercher des fichiers.
 
 Pour rechercher des fichier il y a deux commandes, `locate` et `find`. La première est très simple et la deuxième peut devenir très (très très très) complexe.
 
@@ -374,7 +383,7 @@ Comment faire si je veux copier toute les images .jpg de mon disque dur dans un 
 
 Ici j'ai volontairement bridé la commande avec l'option `-maxdepth 1` pour que find ne descende pas plus en profondeur dans l'arborescence que 1 étage, soit le dossier courant, ceci pour ne pas faire un gif ou rien ne se passe, le temps que la commande s'execute...
 
-#### Extraire, trier et filtrer les donnée :
+#### IX. Extraire, trier et filtrer les donnée.
 
 Nous allons maintenant voir quelques commandes qui permette d'extraire, de trier et de filtrer les donnée. Aucune de ces commandes ne modifie le fichier de base.
 
@@ -401,7 +410,7 @@ Nous pouvons aussi utiliser les expréssions régulière pour faire des recherch
 Et puis c'est tout. Cette commande est assez simple mais très puissante. Avec le chapitre suivant nous allons voir que l'on peut l'utiliser d'une autre facon qui nous sera très utile.
 
 
-#### Les flux de donnée :
+#### X. Les flux de donnée.
 
 Nous avons vu plusieurs fois la notion de sortie standard, mais aussi la sortie d'erreur. Ici nous allons voir comment maitriser les flux de donnée. 
 
@@ -462,7 +471,7 @@ Nous savons déjà que nous allons devoir rediriger le résultat dans un fichier
 
 **Réponse :** `$ cat f* | grep gmail | sort | uniq > liste_email.txt `
 
-#### Action sur un serveur distant.
+#### XI. Action sur un serveur distant.
 
 Souvent nous serons ammener à faire des transferts de fichier entre ordinateur distant. Nous allons parler des deux manières de faire. En se connectant en **ssh** sur l'ordinateur distant, [voir cours](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/41773-la-connexion-securisee-a-distance-avec-ssh). Sinon il faut passer par un **serveur FTP**
 
